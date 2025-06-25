@@ -461,7 +461,7 @@ IMAGE - SECTION
 
 .section-image {
     background-size: cover;
-    background-position: center center;
+    background-position: top center;
 }
 
 .section-image.bg-top {
@@ -1957,9 +1957,14 @@ IMAGE - HEADER
 */
 
 .header-image, .header-base {
-    background-position: center center;
+
+    background-image: url('images/smp5smg.png'); /* Ganti dengan path gambar Anda */
     background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Opsional */
 }
+
 
 /*
 -------------------------------------------------------------------
