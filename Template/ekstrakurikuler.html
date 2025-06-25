@@ -13,7 +13,23 @@
     <link rel="stylesheet" href="themekit/css/content-box.css">
     <link rel="stylesheet" href="themekit/css/media-box.css">
     <link rel="stylesheet" href="skin.css">
-    <link rel="icon" href="media/favicon.png">
+    <link rel="icon" href="media/logo-smp5.png">
+
+    <style>
+        .cnt-box .img-box img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .cnt-box .img-box img {
+                height: 180px;
+            }
+        }
+    </style>
+
 </head>
 <body class="page-main">
     <div id="preloader"></div>
@@ -21,10 +37,10 @@
         <div class="container">
             <div class="menu-brand">
                 <a href="index.html">
-                    <img class="logo-default scroll-hide" src="media/logo-black-blue-solid.svg" alt="logo" />
-                    <img class="logo-retina scroll-hide" src="media/logo-black-blue-solid.svg" alt="logo" />
-                    <img class="logo-default scroll-show" src="media/logo-white-solid.svg" alt="logo" />
-                    <img class="logo-retina scroll-show" src="media/logo-white-solid.svg" alt="logo" />
+                    <img class="logo-default scroll-hide" src="media/logo-smp5.png" alt="logo" />
+                    <img class="logo-retina scroll-hide" src="media/logo-smp5.png" alt="logo" />
+                    <img class="logo-default scroll-show" src="media/logo-smp5.png" alt="logo" />
+                    <img class="logo-retina scroll-show" src="media/logo-smp5.png" alt="logo" />
                 </a>
             </div>
             <i class="menu-btn"></i>
@@ -66,12 +82,11 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#"></a>
-                        <ul>
-                            <li><a href="treks.html">Treks</a></li>
-                            <li><a href="treks-single.html">Single trek</a></li>
-                        </ul>
-                    </li>
+                        <a href="ekstrakurikuler.html">Ekstrakurikuler</a>
+                    <li>
+                    <li class="dropdown">
+                        <a href="galeri.html">Galeri</a>
+                    <li>
                     <li>
                         <a href="pengumuman.html">Pengumuman</a>
                     </li>
@@ -82,10 +97,10 @@
             </div>
         </div>
     </nav>
-    <header class="header-image ken-burn-center light" data-parallax="true" data-natural-height="1080" data-natural-width="1920" data-bleed="0" data-image-src="http://via.placeholder.com/1920x1080" data-offset="0">
+    <header class="header-image ken-burn-center light" data-parallax="true" data-natural-height="1080" data-natural-width="1920" data-bleed="0" data-image-src="media/cheerleader.png" data-offset="0">
         <div class="container">
-            <h1>Treks</h1>
-            <h2>It feels good to be lost in the right direction</h2>
+            <h1>Ekstrakurikuler</h1>
+            <h2>SMP NEGERI 5 SEMARANG</h2>
             <ol class="breadcrumb">
                 <li><a href="index-2.html">Beranda</a></li>
                 <li><a href="#">Pages</a></li>
@@ -93,6 +108,85 @@
             </ol>
         </div>
     </header>
+
+
+<!-- Swiper Carousel Dokumentasi -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<style>
+    .swiper {
+        width: 100%;
+        padding: 30px 0;
+    }
+    .swiper-slide {
+        background: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    .swiper-slide img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    .caption {
+        font-weight: bold;
+        padding: 10px;
+    }
+</style>
+
+<div class="swiper mySwiper container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <img src="media/foto smp.jpg" alt="Kegiatan 1" />
+            <div class="caption">Kegiatan 1</div>
+        </div>
+        <div class="swiper-slide">
+            <img src="media/fotosmp.png" alt="Kegiatan 2" />
+            <div class="caption">Kegiatan 2</div>
+        </div>
+        <div class="swiper-slide">
+            <img src="media/fotosmp5.jpg" alt="Kegiatan 3" />
+            <div class="caption">Kegiatan 3</div>
+        </div>
+        <div class="swiper-slide">
+            <img src="media/smp5.jpg" alt="Kegiatan 4" />
+            <div class="caption">Kegiatan 4</div>
+        </div>
+        <div class="swiper-slide">
+            <img src="media/smp5smg.jpg" alt="Kegiatan 5" />
+            <div class="caption">Kegiatan 5</div>
+        </div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    const swiper = new Swiper('.mySwiper', {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            0: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+        }
+    });
+</script>
+
+
+
+
     <main>
         <section class="section-base section-color">
             <div class="container">
@@ -111,10 +205,10 @@
                     <div class="maso-box">
                         <div class="maso-item cat-1">
                             <div class="cnt-box cnt-box-info boxed" data-href="treks-single.html">
-                                <div class="extra-field">From $49</div>
-                                <a href="treks-single.html" class="img-box"><img src="http://via.placeholder.com/800x500" alt="" /></a>
+                                <div class="extra-field">Senin</div>
+                                <a href="treks-single.html" class="img-box"><img src="media/btaq.png" alt="" /></a>
                                 <div class="caption">
-                                    <h2>Bianco Excursion</h2>
+                                    <h2>Baca Tulis Al-Qur'an</h2>
                                     <div class="cnt-info">
                                         <div><span>Days</span><span>3</span></div>
                                         <div><span>Group size</span><span>10</span></div>
@@ -131,10 +225,10 @@
                         </div>
                         <div class="maso-item cat-2">
                             <div class="cnt-box cnt-box-info boxed" data-href="treks-single.html">
-                                <div class="extra-field">From $99</div>
-                                <a href="treks-single.html" class="img-box"><img src="http://via.placeholder.com/800x500" alt="" /></a>
+                                <div class="extra-field">Senin</div>
+                                <a href="treks-single.html" class="img-box"><img src="media/jurnalistik.png" alt="" /></a>
                                 <div class="caption">
-                                    <h2>Civetta Trekking</h2>
+                                    <h2>Jurnalistik</h2>
                                     <div class="cnt-info">
                                         <div><span>Days</span><span>3</span></div>
                                         <div><span>Group size</span><span>8</span></div>
@@ -151,10 +245,10 @@
                         </div>
                         <div class="maso-item cat-1 cat-3 cat-4">
                             <div class="cnt-box cnt-box-info boxed" data-href="treks-single.html">
-                                <div class="extra-field">From $49</div>
-                                <a href="treks-single.html" class="img-box"><img src="http://via.placeholder.com/800x500" alt="" /></a>
+                                <div class="extra-field">Senin</div>
+                                <a href="treks-single.html" class="img-box"><img src="media/basket.png" alt="" /></a>
                                 <div class="caption">
-                                    <h2>Nevegal Trekking</h2>
+                                    <h2>Basket</h2>
                                     <div class="cnt-info">
                                         <div><span>Days</span><span>3</span></div>
                                         <div><span>Group size</span><span>5</span></div>
@@ -171,10 +265,10 @@
                         </div>
                         <div class="maso-item cat-2">
                             <div class="cnt-box cnt-box-info boxed" data-href="treks-single.html">
-                                <div class="extra-field">From $49</div>
-                                <a href="treks-single.html" class="img-box"><img src="http://via.placeholder.com/800x500" alt="" /></a>
+                                <div class="extra-field">Senin</div>
+                                <a href="treks-single.html" class="img-box"><img src="media/futsal.png" alt="" /></a>
                                 <div class="caption">
-                                    <h2>Glacier expedition</h2>
+                                    <h2>Futsal</h2>
                                     <div class="cnt-info">
                                         <div><span>Days</span><span>3</span></div>
                                         <div><span>Group size</span><span>10</span></div>
@@ -191,10 +285,10 @@
                         </div>
                         <div class="maso-item cat-1">
                             <div class="cnt-box cnt-box-info boxed" data-href="treks-single.html">
-                                <div class="extra-field">From $79</div>
-                                <a href="treks-single.html" class="img-box"><img src="http://via.placeholder.com/800x500" alt="" /></a>
+                                <div class="extra-field">Senin</div>
+                                <a href="treks-single.html" class="img-box"><img src="media/pmr.png" alt="" /></a>
                                 <div class="caption">
-                                    <h2>Family trip</h2>
+                                    <h2>Palang Merah Remaja</h2>
                                     <div class="cnt-info">
                                         <div><span>Days</span><span>3</span></div>
                                         <div><span>Group size</span><span>10</span></div>
@@ -211,10 +305,10 @@
                         </div>
                         <div class="maso-item cat-2">
                             <div class="cnt-box cnt-box-info boxed" data-href="treks-single.html">
-                                <div class="extra-field">From $449</div>
-                                <a href="treks-single.html" class="img-box"><img src="http://via.placeholder.com/800x500" alt="" /></a>
+                                <div class="extra-field">Senin</div>
+                                <a href="treks-single.html" class="img-box"><img src="media/paskibra.png" alt="" /></a>
                                 <div class="caption">
-                                    <h2>Monte Excursion</h2>
+                                    <h2>Paskibra</h2>
                                     <div class="cnt-info">
                                         <div><span>Days</span><span>3</span></div>
                                         <div><span>Group size</span><span>10</span></div>
@@ -229,6 +323,125 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="maso-item cat-2">
+                            <div class="cnt-box cnt-box-info boxed" data-href="treks-single.html">
+                                <div class="extra-field">Senin</div>
+                                <a href="treks-single.html" class="img-box"><img src="media/paduan suara.png" alt="" /></a>
+                                <div class="caption">
+                                    <h2>Paduan Suara</h2>
+                                    <div class="cnt-info">
+                                        <div><span>Days</span><span>3</span></div>
+                                        <div><span>Group size</span><span>10</span></div>
+                                        <div><span>Difficulty</span><span>Easy</span></div>
+                                    </div>
+                                    <p>
+                                        Monte Albert is a mountain located in the deep nature and sourrounded by animals.
+                                    </p>
+                                    <div class="bottom-info">
+                                        Albert, Colorado, US
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="maso-item cat-2">
+                            <div class="cnt-box cnt-box-info boxed" data-href="treks-single.html">
+                                <div class="extra-field">Senin</div>
+                                <a href="treks-single.html" class="img-box"><img src="media/osnipa.png" alt="" /></a>
+                                <div class="caption">
+                                    <h2>OSN IPA</h2>
+                                    <div class="cnt-info">
+                                        <div><span>Days</span><span>3</span></div>
+                                        <div><span>Group size</span><span>10</span></div>
+                                        <div><span>Difficulty</span><span>Easy</span></div>
+                                    </div>
+                                    <p>
+                                        Monte Albert is a mountain located in the deep nature and sourrounded by animals.
+                                    </p>
+                                    <div class="bottom-info">
+                                        Albert, Colorado, US
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="maso-item cat-2">
+                            <div class="cnt-box cnt-box-info boxed" data-href="treks-single.html">
+                                <div class="extra-field">Senin</div>
+                                <a href="treks-single.html" class="img-box"><img src="media/osnips.png" alt="" /></a>
+                                <div class="caption">
+                                    <h2>OSN IPS</h2>
+                                    <div class="cnt-info">
+                                        <div><span>Days</span><span>3</span></div>
+                                        <div><span>Group size</span><span>10</span></div>
+                                        <div><span>Difficulty</span><span>Easy</span></div>
+                                    </div>
+                                    <p>
+                                        Monte Albert is a mountain located in the deep nature and sourrounded by animals.
+                                    </p>
+                                    <div class="bottom-info">
+                                        Albert, Colorado, US
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="maso-item cat-2">
+                            <div class="cnt-box cnt-box-info boxed" data-href="treks-single.html">
+                                <div class="extra-field">Senin</div>
+                                <a href="treks-single.html" class="img-box"><img src="media/osnmtk.png" alt="" /></a>
+                                <div class="caption">
+                                    <h2>OSN Matematika</h2>
+                                    <div class="cnt-info">
+                                        <div><span>Days</span><span>3</span></div>
+                                        <div><span>Group size</span><span>10</span></div>
+                                        <div><span>Difficulty</span><span>Easy</span></div>
+                                    </div>
+                                    <p>
+                                        Monte Albert is a mountain located in the deep nature and sourrounded by animals.
+                                    </p>
+                                    <div class="bottom-info">
+                                        Albert, Colorado, US
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="maso-item cat-2">
+                            <div class="cnt-box cnt-box-info boxed" data-href="treks-single.html">
+                                <div class="extra-field">Senin</div>
+                                <a href="treks-single.html" class="img-box"><img src="media/pramuka.png" alt="" /></a>
+                                <div class="caption">
+                                    <h2>Pramuka</h2>
+                                    <div class="cnt-info">
+                                        <div><span>Days</span><span>3</span></div>
+                                        <div><span>Group size</span><span>10</span></div>
+                                        <div><span>Difficulty</span><span>Easy</span></div>
+                                    </div>
+                                    <p>
+                                        Monte Albert is a mountain located in the deep nature and sourrounded by animals.
+                                    </p>
+                                    <div class="bottom-info">
+                                        Albert, Colorado, US
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="maso-item cat-2">
+                            <div class="cnt-box cnt-box-info boxed" data-href="treks-single.html">
+                                <div class="extra-field">Senin</div>
+                                <a href="treks-single.html" class="img-box"><img src="media/cheerleader2.png" alt="" /></a>
+                                <div class="caption">
+                                    <h2>Cheerleader</h2>
+                                    <div class="cnt-info">
+                                        <div><span>Days</span><span>3</span></div>
+                                        <div><span>Group size</span><span>10</span></div>
+                                        <div><span>Difficulty</span><span>Easy</span></div>
+                                    </div>
+                                    <p>
+                                        Monte Albert is a mountain located in the deep nature and sourrounded by animals.
+                                    </p>
+                                    <div class="bottom-info">
+                                        Albert, Colorado, US
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                 </div>
                 <hr class="space" />
