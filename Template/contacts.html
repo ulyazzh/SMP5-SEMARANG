@@ -34,7 +34,7 @@
             <div class="menu-cnt">
                 <ul id="main-menu">
                     <li class="dropdown">
-                        <a href="index-2.html">Beranda</a>
+                        <a href="index.html">Beranda</a>
                     </li>
                     <li class="dropdown">
                         <a href="#">Profil</a>
@@ -68,6 +68,9 @@
                             </li>
                         </ul>
                     </li>
+                     <li class="dropdown">
+                        <a href="ekstrakurikuler.html">Ekstrakurikuler</a>
+                    </li>
                     <li class="dropdown">
                         <a href="galeri.html">Galeri</a>
                     </li>
@@ -84,7 +87,23 @@
     <main>
         <section class="section-base">
             <div class="container">
-                <div class="google-map" data-marker="media/marker.png" data-coords="-7.010739, 110.417112"></div>   
+               <!-- <div class="google-map" data-marker="media/marker.png" data-coords="-6.9902602,110.4004778"></div>   -->
+                <div id="map" style="height: 400px;"></div>
+                <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+                <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+                <script>
+                var map = L.map('map').setView([-6.9902602,110.4004778], 13);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors'
+                }).addTo(map);
+                // Tambahkan marker
+                var marker = L.marker([-7.010739274794841, 110.41704787879696]).addTo(map);
+                marker.bindPopup("Lokasi SMP 5 Semarang").openPopup();
+                </script>   
+                
+                
+            
                 <hr class="space" />
                 <div class="row">
                     <div class="col-lg-8">
@@ -128,10 +147,9 @@
                         </div>
                         <hr class="space-sm" />
                         <div class="icon-links icon-social icon-links-grid social-colors-hover">
-                            <a class="facebook"><i class="icon-facebook"></i></a>
-                            <a class="twitter"><i class="icon-twitter"></i></a>
-                            <a class="instagram"><i class="icon-instagram"></i></a>
-                            <a class="google"><i class="icon-google"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=100061439505169 " target="_blank" rel="noopener noreferrer"><i class="icon-facebook"></i></a>
+                            <a href="https://www.instagram.com/smpn5semarangofficial/" target="_blank" rel="noopener noreferrer"><i class="icon-instagram"></i></a>
+                            <a href="https://www.instagram.com/smpn5semarangofficial/" target="_blank" rel="noopener noreferrer"><i class="icon-google"></i></a>
                         </div>
                     </div>
                 </div>
@@ -153,14 +171,12 @@
                     </ul>
                 </div>
                 <div class="col-lg-4">
-                    <div class="icon-links icon-social icon-links-grid social-colors">
-                        <a class="facebook"><i class="icon-facebook"></i></a>
-                        <a class="twitter"><i class="icon-twitter"></i></a>
-                        <a class="instagram"><i class="icon-instagram"></i></a>
-                        <a class="google"><i class="icon-google"></i></a>
-                    </div>
+                    <div class="icon-links icon-social icon-links-grid social-colors-hover">
+                            <a href="https://www.facebook.com/profile.php?id=100061439505169 " target="_blank" rel="noopener noreferrer"><i class="icon-facebook"></i></a>
+                            <a href="https://www.instagram.com/smpn5semarangofficial/" target="_blank" rel="noopener noreferrer"><i class="icon-instagram"></i></a>
+                            <a href="https://www.instagram.com/smpn5semarangofficial/" target="_blank" rel="noopener noreferrer"><i class="icon-google"></i></a>
+                        </div>
                     <hr class="space-sm" />
-                    <p>Subscribe to our newsletter of follow us on the social channels to stay tuned.</p>
                 </div>
             </div>
         </div>
