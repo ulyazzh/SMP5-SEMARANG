@@ -1,4 +1,4 @@
-﻿<?php
+﻿<?php 
 // Include konfigurasi database
 include 'config.php';
 

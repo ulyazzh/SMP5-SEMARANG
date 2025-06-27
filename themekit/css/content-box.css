@@ -26,8 +26,14 @@ Table of contents
 */
 
 .cnt-box {
-    position: relative;
+   position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;      
+    height: 90%;             
+    text-align: center;   
 }
 
 .cnt-box:hover .img-box img {
