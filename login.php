@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
         <div class="text-center mb-6">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/Tutwuri.png" alt="Logo SMP N 5 Semarang" class="mx-auto h-16 mb-2">
+            <img src="media/smp1.png" alt="Logo SMP N 5 Semarang" class="mx-auto h-16 mb-2">
             <h1 class="text-2xl font-bold text-gray-700">Login Admin</h1>
             <p class="text-gray-500">SMP N 5 Semarang</p>
         </div>
