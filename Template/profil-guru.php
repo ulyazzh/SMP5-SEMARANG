@@ -1,4 +1,13 @@
-﻿<!DOCTYPE html>
+﻿<?php
+// Include konfigurasi database
+include 'config.php';
+
+// Query untuk mengambil data guru dari database
+$query = "SELECT * FROM guru";
+$result = mysqli_query($koneksi, $query);
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
