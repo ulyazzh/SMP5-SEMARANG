@@ -10,3 +10,6 @@ if (!$koneksi) {
     die("Koneksi ke database gagal: " . mysqli_connect_error());
 }
 ?>
+
+
+
