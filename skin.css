@@ -370,7 +370,7 @@ main > .section-google-map > .container {
 
 .events-list .caption .extra-field {
     font-weight: 600;
-    margin-bottom: 15px;
+    margin-bottom: 150px;
     display: inline-block;
     position: relative;
     padding-left: 40px;
@@ -403,7 +403,7 @@ main > .section-google-map > .container {
 }
 
 .section-home-alpins h1 {
-    position: absolute;
+    position: center;
     z-index: 2;
     max-width: 600px;
 }
@@ -420,7 +420,8 @@ main > section.section-base.section-home-alpins {
 
 .section-home-alpins .media-box-full .caption {
     width: 150px;
-    height: 110px;
+    height: 11
+    0px;
     background: rgb(55, 156, 244);
     right: -50px;
 }
@@ -471,15 +472,6 @@ main > section.section-base.section-home-alpins {
     overflow: visible;
 }
 
-.section-home-alpins + section:before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 150px;
-    top: 0;
-    left: 0;
-    right: 0;
-}
 
 .section-home-alpins + section > .container > div {
     margin-top: -50px;
@@ -2362,4 +2354,34 @@ Extra small devices (portrait phones, less than 576px)
         font-size: 30px;
         line-height: 45px;
     }
+    /* Penyesuaian untuk Penjajaran Baris "Visi Misi Sekolah" */
+.section-base .container .row {
+    align-items: flex-start; /* Memastikan semua kolom di baris ini dimulai dari bagian atas */
 }
+
+/* Penyesuaian untuk Penjajaran Kotak "Fasilitas", "Ekstrakurikuler", "Prestasi" */
+.grid-list .grid-item {
+    display: flex; /* Mengubah grid-item menjadi kontainer flex */
+    flex-direction: column; /* Mengatur item di dalamnya menumpuk secara vertikal */
+    height: 100%; /* Memastikan grid-item mengisi seluruh tinggi sel gridnya */
+}
+
+.grid-list .grid-item .cnt-box {
+    display: flex; /* Mengubah cnt-box menjadi kontainer flex */
+    flex-direction: column; /* Mengatur konten di dalamnya menumpuk secara vertikal */
+    height: 100%; /* Memastikan cnt-box mengisi seluruh tinggi dari parent-nya (grid-item) */
+}
+
+/* Untuk mengatur konten di dalam area caption agar sejajar dengan benar jika tingginya bervariasi */
+.grid-list .grid-item .cnt-box .caption {
+    flex-grow: 1; /* Memungkinkan area caption untuk mengambil sisa ruang vertikal yang tersedia */
+    display: flex; /* Mengubah caption menjadi kontainer flex */
+    flex-direction: column; /* Mengatur elemen di dalamnya menumpuk secara vertikal */
+    justify-content: space-between; /* Mendorong konten atas ke atas dan konten bawah ke bawah */
+}
+
+.grid-list .grid-item .cnt-box .caption p.bottom-info {
+    margin-top: auto; /* Mendorong paragraf "bottom-info" ke bagian paling bawah caption */
+}
+}
+
