@@ -28,6 +28,27 @@ if (isset($_POST['simpan'])) {
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
+<!-- Link Bootstrap Icons (jika belum ada) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+<a href="../dashboard-adm.php" class="btn btn-primary rounded-pill shadow-sm mb-3" style="padding: 8px 20px; font-weight: 500; margin-top: 20px; margin-left: 20px;">
+    <i class="bi bi-arrow-left-circle-fill"></i> Kembali ke Admin Panel
+</a>
+
+<style>
+    .btn-outline-primary:hover {
+        background-color: #0d6efd;
+        color: white;
+        transform: scale(1.05);
+    }
+    
+</style>
+
+
+
 <div class="container mt-5">
     <div class="d-flex justify-content-start mb-4">
         <a href="../dashboard-adm.php" class="btn btn-secondary">

@@ -73,6 +73,7 @@ if (!isset($_SESSION["login"])) {
                     <a href="/admin/admin-profil-guru.php" class="bg-blue-600 text-white px-4 py-2 rounded inline-block text-center">Kelola</a>
                 </div>
 
+
                 <div class="bg-white shadow rounded p-4">
                     <h2 class="text-xl font-bold mb-2">Kepala Sekolah</h2>
                     <p class="text-gray-600 mb-4">Atur informasi kepala sekolah.</p>
