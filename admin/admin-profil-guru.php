@@ -11,80 +11,32 @@ if (isset($_POST['simpan'])) {
     $folder = "../upload/" . $foto;
 
     if (move_uploaded_file($tmp, $folder)) {
+        // PERHATIAN: Ini masih rentan SQL Injection. Sangat disarankan menggunakan Prepared Statements.
         $query = "INSERT INTO guru (nama, mapel, foto) VALUES ('$nama', '$mapel', '$foto')";
-        mysqli_query($koneksi, $query);
+        if (mysqli_query($koneksi, $query)) {
+            // Redirect untuk mencegah resubmission form
+            header("Location: admin-profil-guru.php");
+            exit();
+        } else {
+            echo "<div class='alert alert-danger mt-3'>Error menyimpan data: " . mysqli_error($koneksi) . "</div>";
+        }
+    } else {
+        echo "<div class='alert alert-danger mt-3'>Error mengunggah foto. Pastikan file adalah gambar yang valid.</div>";
     }
 }
 ?>
 
-
-
-
-
-
-
-
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-
-<body class="page-main">
-    <div id="preloader"></div>
-    <nav class="menu-classic menu-fixed menu-transparent light align-right" data-menu-anima="fade-in">
-        <div class="container">
-            <i class="menu-btn"></i>
-            <div class="menu-cnt">
-                <ul id="main-menu">
-                    <li class="dropdown">
-                        <a href="index-2.html">BERANDA</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#">PROFIL</a>
-                        <ul>
-                            <li class="dropdown-submenu">
-                                <a>Profil</a>
-                                <ul>
-                                    <li><a href="about.html">Profil Sekolah</a></li>
-                                    <li><a href="profil-guru.php">Profil Guru</a></li>
-                                    <li><a href="profil-siswa.html">Profil Siswa</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a>Special</a>
-                                <ul>
-                                    <li><a href="food.html">Food</a></li>
-                                    <li><a href="shelters.html">Shelters</a></li>
-                                    <li><a href="events.html">Events</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="elements/components/buttons.html">Elements</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="ekstrakurikuler.html">Ekstrakurikuler</a>
-                    <li>
-                                        <li class="dropdown">
-                        <a href="galeri.html">Galeri</a>
-                    <li>
-                        <a href="pengumuman.html">Pengumuman</a>
-                    </li>
-                    <li>
-                        <a href="contacts.html">Kontak</a>
-                    </li>
-                    <li>
-                        <a href="login.php">Login</a>
-                    </li>
-                  
-            </div>
-        </div>
-    </nav>
-
 <div class="container mt-5">
+    <div class="d-flex justify-content-start mb-4">
+        <a href="../dashboard-adm.php" class="btn btn-secondary">
+            <i class="fas fa-arrow-left me-2"></i> Kembali ke admin panel
+        </a>
+    </div>
+
     <h2 class="mb-4">Kelola Profil Guru</h2>
 
-    <!-- Form Tambah Guru -->
     <div class="card mb-4">
         <div class="card-header bg-primary text-white">
             Tambah Data Guru
@@ -108,7 +60,6 @@ if (isset($_POST['simpan'])) {
         </div>
     </div>
 
-    <!-- Tabel Data Guru -->
     <div class="card">
         <div class="card-header bg-primary text-white">
             Data Guru
@@ -124,22 +75,34 @@ if (isset($_POST['simpan'])) {
                         <th>Aksi</th>
                     </tr>
                 </thead>
-            <tbody>
+                <tbody>
+                    <?php
+                    $result = mysqli_query($koneksi, "SELECT * FROM guru");
+                    $no = 1;
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
+                    <tr>
+                        <td><?= $no++ ?></td>
+                        <td><img src="../upload/<?= htmlspecialchars($row['foto']) ?>" width="80" alt="Foto <?= htmlspecialchars($row['nama']) ?>"></td>
+                        <td><?= htmlspecialchars($row['nama']) ?></td>
+                        <td><?= htmlspecialchars($row['mapel']) ?></td>
+                        <td>
+                            <a href="edit-guru.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="hapus-guru.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <?php
+                        }
+                    } else {
+                        echo "<tr><td colspan='5' class='text-center'>Tidak ada data guru.</td></tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
-    <?php
-        $result = mysqli_query($koneksi, "SELECT * FROM guru");
-        $no = 1;
-        while ($row = mysqli_fetch_assoc($result)) {
-    ?>
-
- <tr>
-            <td><?= $no++ ?></td>
-            <td><img src="../upload/<?= $row['foto'] ?>" width="80"></td>
-            <td><?= $row['nama'] ?></td>
-            <td><?= $row['mapel'] ?></td>
-            <td>
-                <a href="edit-guru.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-warning">Edit</a>
-                <a href="hapus-guru.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus?')">Hapus</a>
-            </td>
-        </tr>
-        <?php } ?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

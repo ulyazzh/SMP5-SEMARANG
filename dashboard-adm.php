@@ -14,6 +14,8 @@ if (!isset($_SESSION["login"])) {
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+
     
     <!-- Modal Selamat Datang -->
     <div id="welcomeModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -43,6 +45,11 @@ if (!isset($_SESSION["login"])) {
                 <a href="#" class="block hover:bg-blue-800 p-2 rounded">Galeri</a>
                 <a href="#" class="block hover:bg-blue-800 p-2 rounded">Pengumuman</a>
                 <a href="#" class="block hover:bg-blue-800 p-2 rounded">Kontak</a>
+                <div class="d-flex justify-content-start mb-4">
+                    <a href="../Index.html" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left me-2"></i> Kembali ke Beranda
+                    </a>
+                </div>
                 <a href="logout.php" class="block hover:bg-blue-800 p-2 rounded text-red-300">Logout</a>
             </nav>
         </div>
@@ -57,13 +64,13 @@ if (!isset($_SESSION["login"])) {
                 <div class="bg-white shadow rounded p-4">
                     <h2 class="text-xl font-bold mb-2">Profil Sekolah</h2>
                     <p class="text-gray-600 mb-4">Kelola informasi profil sekolah.</p>
-                    <button class="bg-blue-600 text-white px-4 py-2 rounded">Kelola</button>
+                    <button  class="bg-blue-600 text-white px-4 py-2 rounded">Kelola</button>
                 </div>
 
                 <div class="bg-white shadow rounded p-4">
                     <h2 class="text-xl font-bold mb-2">Profil Guru</h2>
                     <p class="text-gray-600 mb-4">Tambah atau edit data guru.</p>
-                    <button class="bg-blue-600 text-white px-4 py-2 rounded">Kelola</button>
+                    <a href="/admin/admin-profil-guru.php" class="bg-blue-600 text-white px-4 py-2 rounded inline-block text-center">Kelola</a>
                 </div>
 
                 <div class="bg-white shadow rounded p-4">
@@ -95,6 +102,8 @@ if (!isset($_SESSION["login"])) {
                     <p class="text-gray-600 mb-4">Kelola informasi kontak sekolah.</p>
                     <button class="bg-blue-600 text-white px-4 py-2 rounded">Kelola</button>
                 </div>
+
+                
             </div>
         </div>
     </body>

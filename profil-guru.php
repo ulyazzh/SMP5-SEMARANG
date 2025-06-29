@@ -186,21 +186,7 @@ if (!$result) {
             $foto_path = "media/nofoto.png";
         }
     ?>
-    <div id="user-<?= $row['id'] ?>" class="lightbox-content">
-        <div class="img-box">
-            <img src="<?= $foto_path ?>" alt="<?= htmlspecialchars($row['nama']) ?>" />
-        </div>
-        <div class="cnt-box">
-            <h2><?= htmlspecialchars($row['nama']) ?></h2>
-            <p><?= htmlspecialchars($row['mapel']) ?></p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-            <hr class="space-sm" />
-            <div class="icon-links icon-social icon-links-grid">
-                </div>
-        </div>
-    </div>
+    
     <?php
     }
     ?>
