@@ -3,7 +3,7 @@ require_once 'config.php';
 
 // Ambil data sekolah dari database
 $query = "SELECT * FROM profil_sekolah LIMIT 1";
-$result = mysqli_query($koneksi, $query);
+$result = mysqli_query($conn, $query);
 
 if ($result && mysqli_num_rows($result) > 0) {
     $data = mysqli_fetch_assoc($result);

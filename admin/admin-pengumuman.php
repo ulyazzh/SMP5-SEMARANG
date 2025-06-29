@@ -28,7 +28,7 @@ if (isset($_POST['simpan'])) {
         }
     }
 
-    $stmt = $koneksi->prepare("INSERT INTO pengumuman (judul, isi, tanggal, gambar) VALUES (?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO pengumuman (judul, isi, tanggal, gambar) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("ssss", $judul, $isi, $tanggal, $gambar);
     if($stmt->execute()) {
         $pesan = "Pengumuman berhasil ditambahkan.";
@@ -43,7 +43,7 @@ if (isset($_GET['hapus_id'])) {
     $id_hapus = $_GET['hapus_id'];
     
     // Ambil nama file untuk dihapus dari folder
-    $stmt_get = $koneksi->prepare("SELECT gambar FROM pengumuman WHERE id = ?");
+    $stmt_get = $conn->prepare("SELECT gambar FROM pengumuman WHERE id = ?");
     $stmt_get->bind_param("i", $id_hapus);
     $stmt_get->execute();
     $result_get = $stmt_get->get_result();
@@ -54,7 +54,7 @@ if (isset($_GET['hapus_id'])) {
     }
     $stmt_get->close();
 
-    $stmt_delete = $koneksi->prepare("DELETE FROM pengumuman WHERE id = ?");
+    $stmt_delete = $conn->prepare("DELETE FROM pengumuman WHERE id = ?");
     $stmt_delete->bind_param("i", $id_hapus);
     if($stmt_delete->execute()) $pesan = "Pengumuman berhasil dihapus.";
     $stmt_delete->close();
@@ -62,7 +62,7 @@ if (isset($_GET['hapus_id'])) {
     exit;
 }
 
-$result = mysqli_query($koneksi, "SELECT * FROM pengumuman ORDER BY tanggal DESC");
+$result = mysqli_query($conn, "SELECT * FROM pengumuman ORDER BY tanggal DESC");
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -72,11 +72,15 @@ $result = mysqli_query($koneksi, "SELECT * FROM pengumuman ORDER BY tanggal DESC
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
-<div class="container my-5">
+
+<div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1>Kelola Pengumuman</h1>
-        <a href="dashboard-adm.php" class="btn btn-secondary">Kembali ke Dashboard</a>
+        <h2 class="mb-0">Kelola Pengumuman</h2>
+        <a href="../dashboard-adm.php" class="btn btn-primary rounded-pill shadow-sm" style="padding: 8px 20px; font-weight: 500;">
+            <i class="bi bi-arrow-left-circle-fill"></i> Kembali ke Admin Panel
+        </a>
     </div>
+
 
     <?php if (!empty($pesan) || isset($_GET['pesan'])): ?>
         <div class="alert alert-info"><?php echo htmlspecialchars(isset($_GET['pesan']) ? $_GET['pesan'] : $pesan); ?></div>
@@ -118,7 +122,7 @@ $result = mysqli_query($koneksi, "SELECT * FROM pengumuman ORDER BY tanggal DESC
                     <tr>
                         <td>
                             <?php if(!empty($row['gambar'])): ?>
-                                <img src="uploads/pengumuman/<?= htmlspecialchars($row['gambar']) ?>" width="100" class="img-thumbnail">
+                                <img src="../upload/<?= htmlspecialchars($row['gambar']) ?>" width="100" class="img-thumbnail">
                             <?php else: ?>
                                 <span class="text-muted">No Image</span>
                             <?php endif; ?>

@@ -6,11 +6,11 @@ $pesanError = "";
 
 // Proses login
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = mysqli_real_escape_string($koneksi, $_POST["username"]);
+    $username = mysqli_real_escape_string($conn, $_POST["username"]);
     $password = $_POST["password"];
 
     $query = "SELECT * FROM admin WHERE username = '$username'";
-    $result = mysqli_query($koneksi, $query);
+    $result = mysqli_query($conn, $query);
 
     if (mysqli_num_rows($result) === 1) {
         $data = mysqli_fetch_assoc($result);
@@ -38,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="text-center mb-6">
             <img src="media/smp1.png" alt="Logo SMP N 5 Semarang" class="mx-auto h-16 mb-2">
             <h1 class="text-2xl font-bold text-gray-700">Login Admin</h1>
-            <p class="text-gray-500">SMP N 5 Semarang</p>
         </div>
 
         <?php if ($pesanError) : ?>

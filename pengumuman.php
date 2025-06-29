@@ -64,13 +64,13 @@
                         <a href="ekstrakurikuler.html">Ekstrakurikuler</a>
                     <li>
                     <li class="dropdown">
-                        <a href="galeri.html">Galeri</a>
+                        <a href="galeri.php">Galeri</a>
                     <li>
                     <li>
-                        <a href="pengumuman.html">Pengumuman</a>
+                        <a href="pengumuman.php">Pengumuman</a>
                     </li>
                     <li>
-                        <a href="contacts.html">Kontak</a>
+                        <a href="contacts.php">Kontak</a>
                     </li>
                 </ul>
             </div>
@@ -85,7 +85,7 @@
 
 <?php
 include 'config.php';
-$result = mysqli_query($koneksi, "SELECT * FROM pengumuman ORDER BY tanggal DESC");
+$result = mysqli_query($conn, "SELECT * FROM pengumuman ORDER BY tanggal DESC");
 ?>
 <main>
     <header class="header-image ken-burn-center light" style="background-image:url('media/pengumuman-bg.jpg');">
