@@ -38,30 +38,15 @@
                         <a href="#">Profil</a>
                         <ul>
                             <li class="dropdown-submenu">
+                                <li><a href="kepalasekolah.html">Profil Kepala Sekolah</a></li>
                                 <a>Profil</a>
                                 <ul>
                                     <li><a href="about.html">Profil Sekolah</a></li>
                                     <li><a href="profil-guru.php">Profil Guru</a></li> <li><a href="profil-siswa.html">Profil Siswa</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown-submenu">
-                                <a>Special</a>
-                                <ul>
-                                    <li><a href="food.html">Food</a></li>
-                                    <li><a href="shelters.html">Shelters</a></li>
-                                    <li><a href="events.html">Events</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a>Others</a>
-                                <ul>
-                                    <li><a href="prices.html">Prices</a></li>
-                                    <li><a href="history.html">History</a></li>
-                                    <li><a href="gallery.html">Gallery</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="elements/components/buttons.html">Elements</a>
+                             <li class="dropdown-submenu">
+                                <li><a href="profil-guru.php">Profil Guru</a></li>   
                             </li>
                         </ul>
                     </li>
