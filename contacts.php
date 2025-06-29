@@ -1,12 +1,9 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="id"> <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SMP 5 Semarang</title>
-    <meta name="description" content="">
-    <script src="themekit/scripts/jquery.min.js"></script>
+    <title>Kontak Kami - SMP 5 Semarang</title> <meta name="description" content="Halaman Kontak SMP 5 Semarang"> <script src="themekit/scripts/jquery.min.js"></script>
     <script src="themekit/scripts/main.js"></script>
     <link rel="stylesheet" href="themekit/css/bootstrap-grid.css">
     <link rel="stylesheet" href="themekit/css/style.css">
@@ -17,6 +14,7 @@
     <link rel="stylesheet" href="themekit/css/contact-form.css">
     <link rel="stylesheet" href="skin.css">
     <link rel="icon" href="media/logo-smp5.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body class="page-main">
     <div id="preloader"></div>
@@ -41,13 +39,18 @@
                         <ul>
                             <li class="dropdown-submenu">
                                 <li><a href="kepalasekolah.html">Profil Kepala Sekolah</a></li>
+                                <a>Profil</a>
+                                <ul>
+                                    <li><a href="about.html">Profil Sekolah</a></li>
+                                    <li><a href="profil-guru.php">Profil Guru</a></li> <li><a href="profil-siswa.html">Profil Siswa</a></li>
+                                </ul>
                             </li>
                              <li class="dropdown-submenu">
                                 <li><a href="profil-guru.php">Profil Guru</a></li>   
                             </li>
                         </ul>
                     </li>
-                     <li class="dropdown">
+                    <li class="dropdown">
                         <a href="ekstrakurikuler.html">Ekstrakurikuler</a>
                     </li>
                     <li class="dropdown">
@@ -56,9 +59,7 @@
                     <li>
                         <a href="pengumuman.html">Pengumuman</a>
                     </li>
-                    <li>
-                        <a href="contacts.html">Kontak</a>
-                    </li>
+                    <li class="active"> <a href="contacts.php">Kontak</a> </li>
                 </ul>
             </div>
         </div>
@@ -66,7 +67,6 @@
     <main>
         <section class="section-base">
             <div class="container">
-               <!-- <div class="google-map" data-marker="media/marker.png" data-coords="-6.9902602,110.4004778"></div>   -->
                 <div id="map" style="height: 400px;"></div>
                 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
                 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
@@ -79,17 +79,21 @@
                 // Tambahkan marker
                 var marker = L.marker([-7.010739274794841, 110.41704787879696]).addTo(map);
                 marker.bindPopup("Lokasi SMP 5 Semarang").openPopup();
-                </script>   
-                
-                
-            
+                </script>
+
                 <hr class="space" />
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="title">
                             <h2>Hubungi kami disini</h2>
                         </div>
-                        <form action="themekit/scripts/contact-form/contact-form.php" class="form-box form-ajax" method="post" data-email="example@domain.com">
+                        
+
+                        <form action="handle_contact_submission.php" class="form-box form-ajax" method="post">
+
+                        
+
+
                             <div class="row">
                                 <div class="col-lg-6">
                                     <p>Nama</p>
@@ -101,11 +105,7 @@
                                 </div>
                             </div>
                             <p>Pesan</p>
-                            <textarea id="messagge" name="messagge" class="input-textarea" placeholder="Tulis sesuatu ..." required></textarea>
-                            <div class="form-checkbox">
-                                <input type="checkbox" id="check" name="check" value="check" required>
-                                <label for="check">Anda menerima persyaratan layanan dan kebijakan privasi</label>
-                            </div>
+                            <textarea id="message" name="message" class="input-textarea" placeholder="Tulis sesuatu ..." required></textarea>
                             <button class="btn btn-sm" type="submit">Kirim Pesan</button>
                             <div class="success-box">
                                 <div class="alert alert-success">Pesan Anda telah berhasil terkirim.</div>
@@ -151,10 +151,10 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="icon-links icon-social icon-links-grid social-colors-hover">
-                            <a href="https://www.facebook.com/profile.php?id=100061439505169 " target="_blank" rel="noopener noreferrer"><i class="icon-facebook"></i></a>
-                            <a href="https://www.instagram.com/smpn5semarangofficial/" target="_blank" rel="noopener noreferrer"><i class="icon-instagram"></i></a>
-                            <a href="https://www.instagram.com/smpn5semarangofficial/" target="_blank" rel="noopener noreferrer"><i class="icon-google"></i></a>
-                        </div>
+                        <a href="https://www.facebook.com/profile.php?id=100061439505169 " target="_blank" rel="noopener noreferrer"><i class="icon-facebook"></i></a>
+                        <a href="https://www.instagram.com/smpn5semarangofficial/" target="_blank" rel="noopener noreferrer"><i class="icon-instagram"></i></a>
+                        <a href="https://www.instagram.com/smpn5semarangofficial/" target="_blank" rel="noopener noreferrer"><i class="icon-google"></i></a>
+                    </div>
                     <hr class="space-sm" />
                 </div>
             </div>
@@ -162,8 +162,7 @@
         <div class="footer-bar">
             <div class="container">
                 <span>© 2025 SMP 5 Semarang</span>
-                <span><a href="contacts.html">Contact us</a> | <a href="#">Privacy policy</a></span>
-            </div>
+                <span><a href="contacts.php">Contact us</a> | <a href="#">Privacy policy</a></span> </div>
         </div>
         <link rel="stylesheet" href="themekit/media/icons/iconsmind/line-icons.min.css">
         <script src="themekit/scripts/parallax.min.js"></script>
@@ -173,6 +172,7 @@
         <script src="themekit/scripts/contact-form/contact-form.js"></script>
         <script src='themekit/scripts/maps.min.js'></script>
         <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDl7p8SWg-5kLe7i-usdYCu5m3eVllMDTs'></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </footer>
 </body>
 </html>
