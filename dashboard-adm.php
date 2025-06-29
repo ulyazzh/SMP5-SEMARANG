@@ -43,7 +43,7 @@ if (!isset($_SESSION["login"])) {
                 <a href="#" class="block hover:bg-blue-800 p-2 rounded">Kepala Sekolah</a>
                 <a href="#" class="block hover:bg-blue-800 p-2 rounded">Ekstrakurikuler</a>
                 <a href="#" class="block hover:bg-blue-800 p-2 rounded">Galeri</a>
-                <a href="#" class="block hover:bg-blue-800 p-2 rounded">Pengumuman</a>
+                <a href="/admin/admin-pengumuman.php" class="block hover:bg-blue-800 p-2 rounded">Pengumuman</a>
                 <a href="#" class="block hover:bg-blue-800 p-2 rounded">Kontak</a>
                 <div class="d-flex justify-content-start mb-4">
                     <a href="../Index.html" class="btn btn-secondary">
