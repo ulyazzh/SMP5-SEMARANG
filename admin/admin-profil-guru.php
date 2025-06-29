@@ -27,59 +27,26 @@ if (isset($_POST['simpan'])) {
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
+<!-- Link Bootstrap Icons (jika belum ada) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
-<body class="page-main">
-    <div id="preloader"></div>
-    <nav class="menu-classic menu-fixed menu-transparent light align-right" data-menu-anima="fade-in">
-        <div class="container">
-            <i class="menu-btn"></i>
-            <div class="menu-cnt">
-                <ul id="main-menu">
-                    <li class="dropdown">
-                        <a href="index-2.html">BERANDA</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#">PROFIL</a>
-                        <ul>
-                            <li class="dropdown-submenu">
-                                <a>Profil</a>
-                                <ul>
-                                    <li><a href="about.html">Profil Sekolah</a></li>
-                                    <li><a href="profil-guru.php">Profil Guru</a></li>
-                                    <li><a href="profil-siswa.html">Profil Siswa</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a>Special</a>
-                                <ul>
-                                    <li><a href="food.html">Food</a></li>
-                                    <li><a href="shelters.html">Shelters</a></li>
-                                    <li><a href="events.html">Events</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="elements/components/buttons.html">Elements</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="ekstrakurikuler.html">Ekstrakurikuler</a>
-                    <li>
-                                        <li class="dropdown">
-                        <a href="galeri.html">Galeri</a>
-                    <li>
-                        <a href="pengumuman.html">Pengumuman</a>
-                    </li>
-                    <li>
-                        <a href="contacts.html">Kontak</a>
-                    </li>
-                    <li>
-                        <a href="login.php">Login</a>
-                    </li>
-                  
-            </div>
-        </div>
-    </nav>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+<a href="../dashboard-adm.php" class="btn btn-primary rounded-pill shadow-sm mb-3" style="padding: 8px 20px; font-weight: 500; margin-top: 20px; margin-left: 20px;">
+    <i class="bi bi-arrow-left-circle-fill"></i> Kembali ke Admin Panel
+</a>
+
+<style>
+    .btn-outline-primary:hover {
+        background-color: #0d6efd;
+        color: white;
+        transform: scale(1.05);
+    }
+    
+</style>
+
+
 
 <div class="container mt-5">
     <h2 class="mb-4">Kelola Profil Guru</h2>

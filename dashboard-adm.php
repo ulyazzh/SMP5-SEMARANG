@@ -43,6 +43,7 @@ if (!isset($_SESSION["login"])) {
                 <a href="#" class="block hover:bg-blue-800 p-2 rounded">Galeri</a>
                 <a href="#" class="block hover:bg-blue-800 p-2 rounded">Pengumuman</a>
                 <a href="#" class="block hover:bg-blue-800 p-2 rounded">Kontak</a>
+                <a href="Index.html" class="block hover:bg-blue-800 p-2 rounded">Kembali ke Beranda</a>
                 <a href="logout.php" class="block hover:bg-blue-800 p-2 rounded text-red-300">Logout</a>
             </nav>
         </div>
@@ -63,8 +64,9 @@ if (!isset($_SESSION["login"])) {
                 <div class="bg-white shadow rounded p-4">
                     <h2 class="text-xl font-bold mb-2">Profil Guru</h2>
                     <p class="text-gray-600 mb-4">Tambah atau edit data guru.</p>
-                    <button class="bg-blue-600 text-white px-4 py-2 rounded">Kelola</button>
+                    <a href="admin/admin-profil-guru.php" class="bg-blue-600 text-white px-4 py-2 rounded inline-block hover:bg-blue-700 transition">Kelola</a>
                 </div>
+
 
                 <div class="bg-white shadow rounded p-4">
                     <h2 class="text-xl font-bold mb-2">Kepala Sekolah</h2>
