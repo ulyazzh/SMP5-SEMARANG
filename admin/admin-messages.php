@@ -1,19 +1,4 @@
 <?php
-// === KEAMANAN DASAR (PENTING!) ===
-// Untuk aplikasi nyata, Anda harus menerapkan sistem otentikasi
-// (login) yang lebih canggih di sini untuk memastikan hanya admin yang bisa mengakses.
-// Contoh Sederhana: Anda bisa menambahkan cek session atau otorisasi.
-/*
-session_start();
-if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-    header("Location: admin_login.php"); // Redirect ke halaman login admin
-    exit();
-}
-*/
-// =================================
-
-// 1. Koneksi ke Database
-// Pastikan kredensial ini cocok dengan database smp5_semarang Anda
 $servername = "localhost";
 $username = "root"; // Sesuaikan dengan username database Anda
 $password = "";     // Sesuaikan dengan password database Anda
@@ -28,9 +13,9 @@ if ($conn->connect_error) {
 
 // 2. Logika untuk Menghapus Pesan
 if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id'])) {
-    $id_to_delete = intval($_GET['id']); // Pastikan ID adalah integer untuk keamanan
+    $id_to_delete = intval($_GET['id']); 
 
-    // Tambahkan ini di awal untuk melihat semua error PHP
+    
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
@@ -57,7 +42,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id']))
     $stmt_delete->close();
 
     // Redirect untuk menghilangkan parameter GET setelah delete (mencegah double submission)
-    header("Location: admin_messages.php?delete_status=" . $delete_status);
+    header("Location: admin-messages.php?delete_status=" . $delete_status);
     exit();
 }
 
@@ -313,7 +298,7 @@ $result = $conn->query($sql);
                                         data-date="<?php echo htmlspecialchars($row['created_at']); ?>">
                                     Lihat
                                 </button>
-                                <a href="admin_messages.php?action=delete&id=<?php echo $row['id']; ?>"
+                                <a href="admin-messages.php?action=delete&id=<?php echo $row['id']; ?>"
                                    class="btn btn-danger"
                                    onclick="return confirm('Apakah Anda yakin ingin menghapus pesan ini?');">
                                     Hapus
@@ -367,7 +352,7 @@ $result = $conn->query($sql);
                 // Set delete button URL in modal
                 modalDeleteButton.onclick = function() {
                     if (confirm('Apakah Anda yakin ingin menghapus pesan ini?')) {
-                        window.location.href = 'admin_messages.php?action=delete&id=' + id;
+                        window.location.href = 'admin-messages.php?action=delete&id=' + id;
                     }
                 };
 

@@ -4,7 +4,7 @@ include '../config.php';
 // Ambil ID dari URL
 $id = $_GET['id'];
 $query = "SELECT * FROM guru WHERE id = $id";
-$result = mysqli_query($koneksi, $query);
+$result = mysqli_query($conn, $query);
 $data = mysqli_fetch_assoc($result);
 
 // Proses Update Data
@@ -30,11 +30,11 @@ if (isset($_POST['update'])) {
         $update_query = "UPDATE guru SET nama='$nama', mapel='$mapel' WHERE id=$id";
     }
 
-    if (mysqli_query($koneksi, $update_query)) {
+    if (mysqli_query($conn, $update_query)) {
         header("Location: admin-profil-guru.php"); // Alihkan kembali ke halaman utama
         exit();
     } else {
-        echo "Error memperbarui data: " . mysqli_error($koneksi);
+        echo "Error memperbarui data: " . mysqli_error($conn);
     }
 }
 ?>
