@@ -182,6 +182,14 @@
     <div id="preloader"></div>
     <nav class="menu-classic menu-fixed menu-transparent light align-right" data-menu-anima="fade-in">
         <div class="container">
+            <div class="menu-brand">
+                <a href="index.html">
+                    <img class="logo-default scroll-hide" src="media/SMP1.png" alt="logo" />
+                    <img class="logo-retina scroll-hide" src="media/SMP1.png" alt="logo" />
+                    <img class="logo-default scroll-show" src="media/SMP1.png" alt="logo" />
+                    <img class="logo-retina scroll-show" src="media/SMP1.png" alt="logo" />
+                </a>
+            </div>
             <i class="menu-btn"></i>
             <div class="menu-cnt">
                 <ul id="main-menu">
@@ -209,10 +217,7 @@
                     </li>
                     <li>
                         <a href="contacts.php">Kontak</a>
-                    </li>
-                    <li>
-                        <a href="login.php">Login</a>
-                    </li>     
+                    </li>    
             </div>
         </div>
     </nav>
