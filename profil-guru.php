@@ -32,7 +32,7 @@ if (!$result) {
     <link rel="stylesheet" href="themekit/css/media-box.css">
     <link rel="stylesheet" href="themekit/css/contact-form.css">
     <link rel="stylesheet" href="skin.css">
-    <link rel="icon" href="media/favicon.png">
+    <link rel="icon" href="media/logo-smp5.png">
 </head>
 <body class="page-main">
     <div id="preloader"></div>
@@ -63,6 +63,10 @@ if (!$result) {
                             </li>
                         </ul>
                     </li>
+                    </li>
+                    <li>
+                        <a href="ekstrakurikuler.php">Ekstrakurikuler</a>
+                    </li>
                     <li class="dropdown">
                         <a href="galeri.php">Galeri</a>
                     </li>
@@ -76,14 +80,14 @@ if (!$result) {
             </div>
         </div>
     </nav>
-    <header class="header-image ken-burn-center light" data-parallax="true" data-natural-height="1080" data-natural-width="1920" data-bleed="0" data-image-src="http://via.placeholder.com/1920x1080" data-offset="0">
+    <header class="header-image ken-burn-center light" data-parallax="true" data-natural-height="1080" data-natural-width="1920" data-bleed="0" data-image-src="media/guru.jpg" data-offset="0">
         <div class="container">
-            <h1>Our team</h1>
-            <h2>Talent wins games, but teamwork win championships</h2>
+            <h1>Profil Guru</h1>
+            <h2>SMP Negeri 5 Semarang</h2>
             <ol class="breadcrumb">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">Pages</a></li>
-                <li><a href="#">Team</a></li>
+                <li><a href="Index.html">Beranda</a></li>
+                <li><a href="ekstrakurikuler.html">Ekstrakurikuler</a></li>
+                <li><a href="galeri.php">Galeri</a></li>
             </ol>
         </div>
     </header>
