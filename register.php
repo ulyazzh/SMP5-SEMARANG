@@ -6,7 +6,7 @@ $pesanSukses = "";
 
 // Proses register
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = mysqli_real_escape_string($koneksi, $_POST["username"]);
+    $username = mysqli_real_escape_string($conn, $_POST["username"]);
     $password = $_POST["password"];
     $konfirmasi = $_POST["konfirmasi"];
 
@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // Cek username sudah ada atau belum
         $query = "SELECT * FROM admin WHERE username = '$username'";
-        $result = mysqli_query($koneksi, $query);
+        $result = mysqli_query($conn, $query);
 
         if (mysqli_num_rows($result) > 0) {
             $pesanError = "Username sudah terdaftar!";
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $passwordHash = password_hash($password, PASSWORD_DEFAULT);
             $insert = "INSERT INTO admin (username, password) VALUES ('$username', '$passwordHash')";
             
-            if (mysqli_query($koneksi, $insert)) {
+            if (mysqli_query($conn, $insert)) {
                 $pesanSukses = "Registrasi berhasil, silakan login!";
             } else {
                 $pesanError = "Terjadi kesalahan saat registrasi!";

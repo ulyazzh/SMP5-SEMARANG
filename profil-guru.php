@@ -65,7 +65,7 @@ if (!$result) {
                     </li>
                     </li>
                     <li>
-                        <a href="ekstrakurikuler.php">Ekstrakurikuler</a>
+                        <a href="ekstrakurikuler.html">Ekstrakurikuler</a>
                     </li>
                     <li class="dropdown">
                         <a href="galeri.php">Galeri</a>
@@ -178,32 +178,29 @@ if (!$result) {
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
-                    <h3>Alpins</h3>
-                    <p>Somewhere between the bottom of the climb and the summit is the answer to the mystery why we climb.</p>
+                    <h3>SMP 5 Semarang</h3>
+                    <p>Sekolah menengah pertama di Kota Semarang, Jawa Tengah.</p>
                 </div>
                 <div class="col-lg-4">
-                    <h3>Contacts</h3>
+                    <h3>Kontak</h3>
                     <ul class="icon-list icon-line">
-                        <li>San Pellegrino, BG, Italy</li>
-                        <li>hello@example.com</li>
-                        <li>02 123 333 444</li>
+                        <li>smpn5@semarangkota.go.id</li>
+                        <li>(024) 8315140</li>
                     </ul>
                 </div>
                 <div class="col-lg-4">
-                    <div class="icon-links icon-social icon-links-grid social-colors">
-                        <a class="facebook"><i class="icon-facebook"></i></a>
-                        <a class="twitter"><i class="icon-twitter"></i></a>
-                        <a class="instagram"><i class="icon-instagram"></i></a>
-                        <a class="google"><i class="icon-google"></i></a>
+                    <div class="icon-links icon-social icon-links-grid social-colors-hover">
+                        <a href="https://www.facebook.com/profile.php?id=100061439505169" target="_blank" rel="noopener noreferrer"><i class="icon-facebook"></i></a>
+                        <a href="https://www.instagram.com/smpn5semarangofficial/" target="_blank" rel="noopener noreferrer"><i class="icon-instagram"></i></a>
+                        <a href="https://www.instagram.com/smpn5semarangofficial/" target="_blank" rel="noopener noreferrer"><i class="icon-google"></i></a>
                     </div>
                     <hr class="space-sm" />
-                    <p>Subscribe to our newsletter of follow us on the social channels to stay tuned.</p>
                 </div>
             </div>
         </div>
         <div class="footer-bar">
             <div class="container">
-                <span>© 2019 Alpins - Hiking & Outdoor Template Handmade by <a href="https://schiocco.com" target="_blank">schiocco.com</a>.</span>
+                 <span>© 2025 SMP 5 Semarang</span>
                 <span><a href="contacts.html">Contact us</a> | <a href="#">Privacy policy</a></span>
             </div>
         </div>
