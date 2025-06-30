@@ -13,12 +13,12 @@ if (isset($_POST['simpan'])) {
     if (move_uploaded_file($tmp, $folder)) {
         // PERHATIAN: Ini masih rentan SQL Injection. Sangat disarankan menggunakan Prepared Statements.
         $query = "INSERT INTO guru (nama, mapel, foto) VALUES ('$nama', '$mapel', '$foto')";
-        if (mysqli_query($koneksi, $query)) {
+        if (mysqli_query($conn, $query)) {
             // Redirect untuk mencegah resubmission form
             header("Location: admin-profil-guru.php");
             exit();
         } else {
-            echo "<div class='alert alert-danger mt-3'>Error menyimpan data: " . mysqli_error($koneksi) . "</div>";
+            echo "<div class='alert alert-danger mt-3'>Error menyimpan data: " . mysqli_error($conn) . "</div>";
         }
     } else {
         echo "<div class='alert alert-danger mt-3'>Error mengunggah foto. Pastikan file adalah gambar yang valid.</div>";
@@ -28,14 +28,34 @@ if (isset($_POST['simpan'])) {
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
+<!-- Link Bootstrap Icons (jika belum ada) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+
+
+<style>
+    .btn-outline-primary:hover {
+        background-color: #0d6efd;
+        color: white;
+        transform: scale(1.05);
+    }
+    
+</style>
+
+
+
 <div class="container mt-5">
-    <div class="d-flex justify-content-start mb-4">
-        <a href="../dashboard-adm.php" class="btn btn-secondary">
-            <i class="fas fa-arrow-left me-2"></i> Kembali ke admin panel
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">Kelola Profil Guru</h2>
+        <a href="../dashboard-adm.php" class="btn btn-primary rounded-pill shadow-sm" style="padding: 8px 20px; font-weight: 500;">
+            <i class="bi bi-arrow-left-circle-fill"></i> Kembali ke Admin Panel
         </a>
     </div>
 
-    <h2 class="mb-4">Kelola Profil Guru</h2>
+    
 
     <div class="card mb-4">
         <div class="card-header bg-primary text-white">
@@ -77,7 +97,7 @@ if (isset($_POST['simpan'])) {
                 </thead>
                 <tbody>
                     <?php
-                    $result = mysqli_query($koneksi, "SELECT * FROM guru");
+                    $result = mysqli_query($conn, "SELECT * FROM guru");
                     $no = 1;
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {

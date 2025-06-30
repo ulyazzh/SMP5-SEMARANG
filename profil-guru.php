@@ -6,11 +6,11 @@ include 'config.php';
 // Query untuk mengambil data guru dari database
 // Urutkan berdasarkan nama agar teratur
 $query = "SELECT * FROM guru ORDER BY nama ASC"; // Anda bisa menyesuaikan ORDER BY sesuai kebutuhan
-$result = mysqli_query($koneksi, $query);
+$result = mysqli_query($conn, $query);
 
 // Cek jika query gagal
 if (!$result) {
-    die("Query gagal: " . mysqli_error($koneksi));
+    die("Query gagal: " . mysqli_error($conn));
 }
 ?>
 
@@ -85,13 +85,13 @@ if (!$result) {
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="galeri.html">Galeri</a>
+                        <a href="galeri.php">Galeri</a>
                     </li>
                     <li>
-                        <a href="pengumuman.html">Pengumuman</a>
+                        <a href="pengumuman.php">Pengumuman</a>
                     </li>
                     <li>
-                        <a href="contacts.html">Kontak</a>
+                        <a href="contacts.php">Kontak</a>
                     </li>
                 </ul>
             </div>

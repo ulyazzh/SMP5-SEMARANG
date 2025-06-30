@@ -1,9 +1,12 @@
 ﻿<!DOCTYPE html>
-<html lang="id"> <head>
+<html lang="id"> 
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Kontak Kami - SMP 5 Semarang</title> <meta name="description" content="Halaman Kontak SMP 5 Semarang"> <script src="themekit/scripts/jquery.min.js"></script>
+    <title>Kontak Kami - SMP 5 Semarang</title>
+    <meta name="description" content="Halaman Kontak SMP 5 Semarang">
+    <script src="themekit/scripts/jquery.min.js"></script>
     <script src="themekit/scripts/main.js"></script>
     <link rel="stylesheet" href="themekit/css/bootstrap-grid.css">
     <link rel="stylesheet" href="themekit/css/style.css">
@@ -24,16 +27,14 @@
                 <a href="index.html">
                     <img class="logo-default scroll-hide" src="media/logo-smp5.png" alt="logo" />
                     <img class="logo-retina scroll-hide" src="media/logo-smp5.png" alt="logo" />
-                    <img class="logo-default scroll-show" src="media/logo-smp5.png " alt="logo" />
+                    <img class="logo-default scroll-show" src="media/logo-smp5.png" alt="logo" />
                     <img class="logo-retina scroll-show" src="media/logo-smp5.png" alt="logo" />
                 </a>
             </div>
             <i class="menu-btn"></i>
             <div class="menu-cnt">
                 <ul id="main-menu">
-                    <li class="dropdown">
-                        <a href="index.html">Beranda</a>
-                    </li>
+                    <li class="dropdown"><a href="index.html">Beranda</a></li>
                     <li class="dropdown">
                         <a href="#">Profil</a>
                         <ul>
@@ -42,24 +43,19 @@
                                 <a>Profil</a>
                                 <ul>
                                     <li><a href="about.html">Profil Sekolah</a></li>
-                                    <li><a href="profil-guru.php">Profil Guru</a></li> <li><a href="profil-siswa.html">Profil Siswa</a></li>
+                                    <li><a href="profil-guru.php">Profil Guru</a></li>
+                                    <li><a href="profil-siswa.html">Profil Siswa</a></li>
                                 </ul>
                             </li>
-                             <li class="dropdown-submenu">
+                            <li class="dropdown-submenu">
                                 <li><a href="profil-guru.php">Profil Guru</a></li>   
                             </li>
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a href="ekstrakurikuler.html">Ekstrakurikuler</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="galeri.html">Galeri</a>
-                    </li>
-                    <li>
-                        <a href="pengumuman.html">Pengumuman</a>
-                    </li>
-                    <li class="active"> <a href="contacts.php">Kontak</a> </li>
+                    <li class="dropdown"><a href="ekstrakurikuler.html">Ekstrakurikuler</a></li>
+                    <li class="dropdown"><a href="galeri.php">Galeri</a></li>
+                    <li><a href="pengumuman.php">Pengumuman</a></li>
+                    <li class="active"><a href="contacts.php">Kontak</a></li>
                 </ul>
             </div>
         </div>
@@ -76,7 +72,6 @@
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     attribution: '© OpenStreetMap contributors'
                 }).addTo(map);
-                // Tambahkan marker
                 var marker = L.marker([-7.010739274794841, 110.41704787879696]).addTo(map);
                 marker.bindPopup("Lokasi SMP 5 Semarang").openPopup();
                 </script>
@@ -87,13 +82,18 @@
                         <div class="title">
                             <h2>Hubungi kami disini</h2>
                         </div>
-                        
 
-                        <form action="handle_contact_submission.php" class="form-box form-ajax" method="post">
+                        <?php
+                        if (isset($_GET['status'])) {
+                            if ($_GET['status'] == 'success') {
+                                echo '<div class="alert alert-success">Pesan Anda telah berhasil terkirim.</div>';
+                            } elseif ($_GET['status'] == 'error') {
+                                echo '<div class="alert alert-warning">Maaf, Pesan Anda belum berhasil terkirim.</div>';
+                            }
+                        }
+                        ?>
 
-                        
-
-
+                        <form action="contact_process.php" class="form-box" method="post">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <p>Nama</p>
@@ -107,12 +107,6 @@
                             <p>Pesan</p>
                             <textarea id="message" name="message" class="input-textarea" placeholder="Tulis sesuatu ..." required></textarea>
                             <button class="btn btn-sm" type="submit">Kirim Pesan</button>
-                            <div class="success-box">
-                                <div class="alert alert-success">Pesan Anda telah berhasil terkirim.</div>
-                            </div>
-                            <div class="error-box">
-                                <div class="alert alert-warning">Maaf, Pesan Anda belum berhasil terkirim.</div>
-                            </div>
                         </form>
                     </div>
                     <div class="col-lg-4">
@@ -126,7 +120,7 @@
                         </div>
                         <hr class="space-sm" />
                         <div class="icon-links icon-social icon-links-grid social-colors-hover">
-                            <a href="https://www.facebook.com/profile.php?id=100061439505169 " target="_blank" rel="noopener noreferrer"><i class="icon-facebook"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=100061439505169" target="_blank" rel="noopener noreferrer"><i class="icon-facebook"></i></a>
                             <a href="https://www.instagram.com/smpn5semarangofficial/" target="_blank" rel="noopener noreferrer"><i class="icon-instagram"></i></a>
                             <a href="https://www.instagram.com/smpn5semarangofficial/" target="_blank" rel="noopener noreferrer"><i class="icon-google"></i></a>
                         </div>
@@ -151,7 +145,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="icon-links icon-social icon-links-grid social-colors-hover">
-                        <a href="https://www.facebook.com/profile.php?id=100061439505169 " target="_blank" rel="noopener noreferrer"><i class="icon-facebook"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=100061439505169" target="_blank" rel="noopener noreferrer"><i class="icon-facebook"></i></a>
                         <a href="https://www.instagram.com/smpn5semarangofficial/" target="_blank" rel="noopener noreferrer"><i class="icon-instagram"></i></a>
                         <a href="https://www.instagram.com/smpn5semarangofficial/" target="_blank" rel="noopener noreferrer"><i class="icon-google"></i></a>
                     </div>
@@ -162,7 +156,8 @@
         <div class="footer-bar">
             <div class="container">
                 <span>© 2025 SMP 5 Semarang</span>
-                <span><a href="contacts.php">Contact us</a> | <a href="#">Privacy policy</a></span> </div>
+                <span><a href="contacts.php">Contact us</a> | <a href="#">Privacy policy</a></span>
+            </div>
         </div>
         <link rel="stylesheet" href="themekit/media/icons/iconsmind/line-icons.min.css">
         <script src="themekit/scripts/parallax.min.js"></script>
