@@ -20,7 +20,7 @@ if (!$result) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Team | 2 | Alpins | Mountain And Trekking Template</title>
+    <title>SMPN 5 Semarang</title>
     <meta name="description" content="">
     <script src="themekit/scripts/jquery.min.js"></script>
     <script src="themekit/scripts/main.js"></script>
@@ -55,32 +55,11 @@ if (!$result) {
                     <li class="dropdown">
                         <a href="#">Profil</a>
                         <ul>
-                            <li class="dropdown-submenu">
-                                <a>Profil</a>
-                                <ul>
-                                    <li><a href="about.html">Profil Sekolah</a></li>
-                                    <li><a href="profil-guru.php">Profil Guru</a></li>
-                                    <li><a href="profil-siswa.html">Profil Siswa</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a>Special</a>
-                                <ul>
-                                    <li><a href="food.html">Food</a></li>
-                                    <li><a href="shelters.html">Shelters</a></li>
-                                    <li><a href="events.html">Events</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a>Others</a>
-                                <ul>
-                                    <li><a href="prices.html">Prices</a></li>
-                                    <li><a href="history.html">History</a></li>
-                                    <li><a href="gallery.html">Gallery</a></li>
-                                </ul>
+                            <li>
+                                <a href="kepalasekolah.html">Profil Kepala Sekolah</a>
                             </li>
                             <li>
-                                <a href="elements/components/buttons.html">Elements</a>
+                                <a href="profil-guru.php">Profil Guru</a>
                             </li>
                         </ul>
                     </li>
