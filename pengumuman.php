@@ -76,9 +76,8 @@
             </div>
         </div>
     </nav>
-    <header class="header-image ken-burn-center light" data-parallax="true" data-natural-height="1080" data-natural-width="1920" data-bleed="0" data-image-src="media/pramuka.png" data-offset="0">
+    <header class="header-image ken-burn-center light" data-parallax="true" data-natural-height="1080" data-natural-width="1920" data-bleed="0" style="background-image:url('media/PENGUMUMAN.png');" data-offset="0">
         <div class="container">
-            <h1>Ekstrakurikuler</h1>
             <h2>SMP NEGERI 5 SEMARANG</h2>
         </div>
     </header>
@@ -88,12 +87,6 @@ include 'config.php';
 $result = mysqli_query($conn, "SELECT * FROM pengumuman ORDER BY tanggal DESC");
 ?>
 <main>
-    <header class="header-image ken-burn-center light" style="background-image:url('media/pengumuman-bg.jpg');">
-        <div class="container">
-            <h1>Pengumuman</h1>
-            <h2>Informasi Terbaru SMP Negeri 5 Semarang</h2>
-        </div>
-    </header>
     <section class="section-base section-color">
         <div class="container">
             <div class="row">
@@ -110,7 +103,7 @@ $result = mysqli_query($conn, "SELECT * FROM pengumuman ORDER BY tanggal DESC");
                                 if(file_exists($gambar_path)):
                             ?>
                                 <a href="#" class="img-box">
-                                    <img src="<?= $gambar_path ?>" alt="Gambar Pengumuman">
+                                    <img src="<?= $gambar_path ?>" alt="">
                                 </a>
                             <?php 
                                 endif;
