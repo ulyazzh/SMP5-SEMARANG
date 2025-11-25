@@ -11,7 +11,15 @@ if ($conn->connect_error) {
     die("Koneksi gagal: " . $conn->connect_error);
 }
 
-// 2. Logika untuk Menghapus Pesan
+// --- BARU: Inisialisasi Variabel Pencarian ---
+$search_term = '';
+if (!empty($_GET['search'])) {
+    $search_term = $_GET['search'];
+}
+// ------------------------------------------
+
+
+// 2. Logika untuk Menghapus Pesan (TETAP SAMA, TIDAK DIUBAH)
 if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id'])) {
     $id_to_delete = intval($_GET['id']); 
 
@@ -46,10 +54,37 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id']))
     exit();
 }
 
-// 3. Ambil Data Pesan dari Database
-// Ganti nama tabel jika Anda menggunakan nama yang berbeda (misal: 'messages')
-$sql = "SELECT id, name, email, message, created_at FROM contact_messages ORDER BY created_at DESC"; // Urutkan dari terbaru
-$result = $conn->query($sql);
+
+// --- MODIFIKASI: Ambil Data Pesan (dengan PENCARIAN) ---
+// Ganti $sql dan $result lama Anda dengan blok 'if/else' ini
+if (!empty($search_term)) {
+    // JIKA ADA PENCARIAN
+    $wildcard_search = "%" . $search_term . "%";
+    $sql = "SELECT id, name, email, message, created_at FROM contact_messages 
+            WHERE name LIKE ? OR email LIKE ? OR message LIKE ? 
+            ORDER BY created_at DESC";
+    
+    $stmt_select = $conn->prepare($sql);
+    if ($stmt_select === false) {
+         die("Error preparing statement: " . $conn->error);
+    }
+    // "sss" berarti kita mengirim 3 string
+    $stmt_select->bind_param("sss", $wildcard_search, $wildcard_search, $wildcard_search);
+    
+} else {
+    // JIKA TIDAK ADA PENCARIAN (Tampilan normal)
+    $sql = "SELECT id, name, email, message, created_at FROM contact_messages 
+            ORDER BY created_at DESC";
+    $stmt_select = $conn->prepare($sql);
+    if ($stmt_select === false) {
+         die("Error preparing statement: " . $conn->error);
+    }
+}
+
+// Eksekusi query select dan ambil hasilnya
+$stmt_select->execute();
+$result = $stmt_select->get_result();
+
 ?>
 
 <!DOCTYPE html>
@@ -230,6 +265,16 @@ $result = $conn->query($sql);
             border-radius: 5px;
             margin-top: 10px;
         }
+
+        .message-table th:last-child,
+        .message-table td:last-child {
+            /* Paksa konten (tombol) untuk tetap dalam satu baris */
+            white-space: nowrap;
+            
+            /* (Opsional) Trik agar lebar kolom pas dengan konten */
+            width: 1%; 
+        }
+
     </style>
 </head>
 <body>
@@ -246,8 +291,19 @@ $result = $conn->query($sql);
         </header>
 
         <main class="admin-content">
-            <h1>Manajemen Pesan Kontak</h1>
+            <h1>Manajemen Kontak</h1>
 
+            <form action="admin-messages.php" method="GET" style="margin-bottom: 20px;">
+                <input type="search" name="search" 
+                       placeholder="Cari berdasarkan nama, email, atau isi pesan..." 
+                       value="<?php echo htmlspecialchars($search_term); ?>" 
+                       style="width: 70%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; vertical-align: middle; font-size: 14px;">
+                <button type="submit" class="btn btn-info" style="vertical-align: middle;">Cari</button>
+                
+                <?php if (!empty($search_term)): ?>
+                    <a href="admin-messages.php" class="btn btn-danger" style="vertical-align: middle;">Reset</a>
+                <?php endif; ?>
+            </form>
             <?php
             // Tampilkan pesan status setelah delete
             if (isset($_GET['delete_status'])) {
@@ -309,8 +365,15 @@ $result = $conn->query($sql);
                     </tbody>
                 </table>
             <?php else: ?>
-                <p>Tidak ada pesan yang masuk saat ini.</p>
-            <?php endif; ?>
+                
+                <?php if (!empty($search_term)): ?>
+                    <p style="text-align: center; padding: 20px; font-weight: bold;">
+                        Tidak ada pesan yang cocok dengan pencarian Anda: "<b><?php echo htmlspecialchars($search_term); ?></b>"
+                    </p>
+                <?php else: ?>
+                    <p style="text-align: center; padding: 20px;">Tidak ada pesan yang masuk saat ini.</p>
+                <?php endif; ?>
+                <?php endif; ?>
         </main>
     </div>
 
@@ -370,14 +433,20 @@ $result = $conn->query($sql);
             }
         }
     </script>
-
+    
     <script src="themekit/scripts/jquery.min.js"></script>
     <script src="themekit/scripts/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
+</body>
 </html>
 
 <?php
+// ======================================================
+// BARU DITAMBAHKAN: Tutup prepared statement SELECT
+// ======================================================
+if (isset($stmt_select) && $stmt_select) {
+    $stmt_select->close();
+}
 // Tutup koneksi database setelah semua data diambil dan ditampilkan
 $conn->close();
 ?>
