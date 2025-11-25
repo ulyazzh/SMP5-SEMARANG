@@ -12,6 +12,9 @@ $result = mysqli_query($conn, $query);
 if (!$result) {
     die("Query gagal: " . mysqli_error($conn));
 }
+
+// Tentukan path foto default sekali saja
+$foto_path_default = "upload/default-avatar.jpg"; // PASTIKAN FILE INI ADA
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +23,7 @@ if (!$result) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SMPN 5 Semarang</title>
+    <title>SMPN 5 Semarang - Profil Guru</title>
     <meta name="description" content="">
     <script src="themekit/scripts/jquery.min.js"></script>
     <script src="themekit/scripts/main.js"></script>
@@ -33,6 +36,21 @@ if (!$result) {
     <link rel="stylesheet" href="themekit/css/contact-form.css">
     <link rel="stylesheet" href="skin.css">
     <link rel="icon" href="media/logo-smp5.png">
+    
+    <style>
+        /* CSS Tambahan untuk merapikan gambar guru */
+        .cnt-box-team img {
+            width: 100%;
+            height: 250px; /* Tentukan tinggi tetap untuk semua gambar */
+            object-fit: cover; /* Pastikan gambar mengisi area tanpa peyot */
+            background-color: #f0f0f0; /* Warna background jika gambar default transparan */
+        }
+        .box-lightbox-md img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+    </style>
 </head>
 <body class="page-main">
     <div id="preloader"></div>
@@ -63,7 +81,6 @@ if (!$result) {
                             </li>
                         </ul>
                     </li>
-                    </li>
                     <li>
                         <a href="ekstrakurikuler.html">Ekstrakurikuler</a>
                     </li>
@@ -86,8 +103,8 @@ if (!$result) {
             <h2>SMP Negeri 5 Semarang</h2>
             <ol class="breadcrumb">
                 <li><a href="Index.html">Beranda</a></li>
-                <li><a href="ekstrakurikuler.html">Ekstrakurikuler</a></li>
-                <li><a href="galeri.php">Galeri</a></li>
+                <li><a>Profil</a></li>
+                <li><a>Profil Guru</a></li>
             </ol>
         </div>
     </header>
@@ -100,15 +117,15 @@ if (!$result) {
                     <ul>
                         <li class="active"><a data-filter="maso-item" href="#">All</a></li>
                         <li><a data-filter="cat-pai" href="#">PAI</a></li>
-                        <li><a data-filter="cat-b.indonesia" href="#">B.Indonesia</a></li>
+                        <li><a data-filter="cat-b-indonesia" href="#">B.Indonesia</a></li>
                         <li><a data-filter="cat-ppkn" href="#">PPKN</a></li>
                         <li><a data-filter="cat-mtk" href="#">MTK</a></li>
                         <li><a data-filter="cat-ipa" href="#">IPA</a></li>
-                        <li><a data-filter="cat-b.inggris" href="#">B.Inggris</a></li>
+                        <li><a data-filter="cat-b-inggris" href="#">B.Inggris</a></li>
                         <li><a data-filter="cat-ips" href="#">IPS</a></li>
                         <li><a data-filter="cat-pjok" href="#">PJOK</a></li>
                         <li><a data-filter="cat-prakarya" href="#">Prakarya</a></li>
-                        <li><a data-filter="cat-b.jawa" href="#">B.Jawa</a></li>
+                        <li><a data-filter="cat-b-jawa" href="#">B.Jawa</a></li>
                         <li><a data-filter="cat-seni" href="#">Seni</a></li>
                         <li><a data-filter="cat-bk" href="#">BK</a></li>
                         <li><a data-filter="cat-tu" href="#">TU</a></li>
@@ -121,26 +138,23 @@ if (!$result) {
                         // Perulangan untuk menampilkan setiap guru dari database
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
-                                // Tentukan path foto. Sesuaikan jika 'upload/' tidak tepat.
-                                // Misal: jika folder 'upload' berada di root, dan profil-guru.php di subfolder, maka pakai '../upload/'
-                                $foto_path = "upload/" . $row['foto'];
-                                // Jika foto tidak ada atau nama file kosong, gunakan gambar placeholder
-                                if (!file_exists($foto_path) || empty($row['foto'])) {
-                                    $foto_path = "media/nofoto.png"; // Pastikan file nofoto.png ada di folder media Anda
+                                
+                                // Tentukan path foto guru
+                                $foto_guru = "upload/" . $row['foto'];
+
+                                // Cek jika foto guru kosong atau filenya tidak ada
+                                if (!empty($row['foto']) && file_exists($foto_guru)) {
+                                    $foto_path = $foto_guru;
+                                } else {
+                                    $foto_path = $foto_path_default; // Gunakan foto default
                                 }
 
-                                // Format mata pelajaran untuk data-category agar sesuai dengan filter template Themekit
-                                // Contoh: "Guru Agama Islam" -> "cat-guru-agama-islam"
-                                // "B.Indonesia" -> "cat-b.indonesia" (jika filter Anda pakai titik)
-                                // Perhatikan bahwa filter di menu Anda menggunakan "cat-1", "cat-2", dll.
-                                // Ini berarti nilai 'mapel' di database harus konsisten dengan 'cat-1', 'cat-2', dll.
-                                // ATAU, Anda harus mengubah data-filter di menu Anda agar sesuai dengan mapel.
-                                // Saya akan mengasumsikan format 'cat-nama_mapel_dislug'.
-                                // Jika 'mapel' di DB adalah 'PAI', maka jadi 'cat-pai'.
+                                // Format 'mapel' agar sesuai dengan filter (mengganti spasi dan titik)
                                 $mapel_slug = "cat-" . strtolower(str_replace([' ', '.', ',', '/'], '-', $row['mapel']));
                         ?>
-                                <div class="grid-item <?= $mapel_slug ?>"> <div class="cnt-box cnt-box-team lightbox" data-href="#user-<?= $row['id'] ?>" data-lightbox-anima="fade-in">
-                                        <img src="<?= $foto_path ?>" alt="<?= htmlspecialchars($row['nama']) ?>" />
+                                <div class="grid-item <?= $mapel_slug ?>"> 
+                                    <div class="cnt-box cnt-box-team lightbox" data-href="#user-<?= $row['id'] ?>" data-lightbox-anima="fade-in">
+                                        <img src="<?= htmlspecialchars($foto_path) ?>" alt="<?= htmlspecialchars($row['nama']) ?>" />
                                         <div class="caption">
                                             <h2><?= htmlspecialchars($row['nama']) ?></h2>
                                             <hr class="space-sm" />
@@ -164,14 +178,36 @@ if (!$result) {
     // Reset pointer result untuk membuat lightbox dari data yang sama
     mysqli_data_seek($result, 0);
     while ($row = mysqli_fetch_assoc($result)) {
-        $foto_path = "upload/" . $row['foto'];
-        if (!file_exists($foto_path) || empty($row['foto'])) {
-            $foto_path = "media/nofoto.png";
+        
+        // Tentukan path foto guru
+        $foto_guru = "upload/" . $row['foto'];
+
+        // Cek jika foto guru kosong atau filenya tidak ada
+        if (!empty($row['foto']) && file_exists($foto_guru)) {
+            $foto_path = $foto_guru;
+        } else {
+            $foto_path = $foto_path_default; // Gunakan foto default
         }
     ?>
     
+    <div id="user-<?= $row['id'] ?>" class="box-lightbox-md mfp-hide">
+        <div class="row">
+            <div class="col-lg-5">
+                <img src="<?= htmlspecialchars($foto_path) ?>" class="img-fluid" alt="<?= htmlspecialchars($row['nama']) ?>">
+            </div>
+            <div class="col-lg-7">
+                <h2><?= htmlspecialchars($row['nama']) ?></h2>
+                <h4><?= htmlspecialchars($row['mapel']) ?></h4>
+                <hr class="space-sm">
+                <p>
+                    Informasi lebih lanjut tentang guru ini akan segera tersedia.
+                </MP>
+                </div>
+        </div>
+    </div>
+
     <?php
-    }
+    } // Akhir dari loop while
     ?>
 
     <footer class="light">
@@ -200,7 +236,7 @@ if (!$result) {
         </div>
         <div class="footer-bar">
             <div class="container">
-                 <span>© 2025 SMP 5 Semarang</span>
+                <span>© 2025 SMP 5 Semarang</span>
                 <span><a href="contacts.html">Contact us</a> | <a href="#">Privacy policy</a></span>
             </div>
         </div>
@@ -210,6 +246,13 @@ if (!$result) {
         <script src="themekit/scripts/progress.js"></script>
         <script src="themekit/scripts/magnific-popup.min.js"></script>
         <script src="themekit/scripts/contact-form/contact-form.js"></script>
+        <script src="themekit/scripts/grid.js"></script> 
+        <script src="themekit/scripts/maso.js"></script> 
     </footer>
 </body>
 </html>
+
+<?php
+// Tutup koneksi database
+mysqli_close($conn);
+?>

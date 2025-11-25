@@ -203,7 +203,7 @@
                                 <li><a href="kepalasekolah.html">Profil Kepala Sekolah</a></li>
                             </li>
                             <li class="dropdown-submenu">
-                                <li><a href="profil-guru.php">Profil Guru</a></li>  
+                                <li><a href="profil-guru.php">Profil Guru</a></li> 
                             </li>
                         </ul>
                     </li>
@@ -218,11 +218,12 @@
                     <li>
                         <a href="contacts.php">Kontak</a>
                     </li>    
+                </ul>
             </div>
         </div>
     </nav>
     <main>
-     
+    
 
         <?php
         include 'config.php';
@@ -274,12 +275,10 @@
 
                     <div class="glide__bullets" data-glide-el="controls[nav]">
                         <?php
-                        $bullet_result = mysqli_query($conn, "SELECT COUNT(*) AS total FROM galeri");
-                        $total_slides_for_bullets = 0;
-                        if ($bullet_result && $row_count = mysqli_fetch_assoc($bullet_result)) {
-                            $total_slides_for_bullets = $row_count['total'];
-                        }
-
+                        // Reset pointer untuk query hitung total
+                        mysqli_data_seek($result_main_gallery, 0); 
+                        $total_slides_for_bullets = mysqli_num_rows($result_main_gallery);
+                        
                         for ($i = 0; $i < $total_slides_for_bullets; $i++) {
                             echo '<button class="glide__bullet" data-glide-dir="' . $i . '"></button>';
                         }
@@ -294,38 +293,41 @@
                 <h3 class="text-center mb-4">Momen Lainnya</h3>
                 <p class="text-center text-muted mb-5">Jelajahi lebih banyak kegiatan dan kenangan dari sekolah kami.</p>
 
-                <div class="row">
-                    <?php
-                    $offset = 4; 
-                    $limit = 6;  
+                <div class="grid-list gap-30" data-columns="3" data-columns-md="2" data-columns-sm="1" data-gap="30">
+                    <div class="grid-box">
+                        <?php
+                        $offset = 4; 
+                        #$limit = 6;  
 
-                    $result_additional_gallery = mysqli_query($conn, "SELECT * FROM galeri ORDER BY tanggal_upload DESC LIMIT {$offset}, {$limit}");
-                    
-                    if ($result_additional_gallery && mysqli_num_rows($result_additional_gallery) > 0) {
-                        while ($row_additional = mysqli_fetch_assoc($result_additional_gallery)) {
-                            $foto_path_additional = 'upload/' . htmlspecialchars($row_additional['nama_file']);
-                            if (!file_exists($foto_path_additional)) continue;
-                    ?>
-                        <div class="col-md-4 col-sm-6 mb-4">
-                            <div class="card h-100 shadow-sm border-0">
-                                <img src="<?php echo $foto_path_additional; ?>" class="card-img-top" alt="<?php echo htmlspecialchars($row_additional['keterangan']); ?>" style="height: 220px; object-fit: cover; border-top-left-radius: 8px; border-top-right-radius: 8px;">
-                                <div class="card-body text-center">
-                                    <?php if (!empty($row_additional['keterangan'])): ?>
-                                        <p class="card-text small text-muted mb-0"><?php echo htmlspecialchars($row_additional['keterangan']); ?></p>
-                                    <?php else: ?>
-                                        <p class="card-text small text-muted mb-0">Tanpa Keterangan</p>
-                                    <?php endif; ?>
+                        $result_additional_gallery = mysqli_query($conn, "SELECT * FROM galeri ORDER BY tanggal_upload DESC LIMIT {$offset}, 1000000");
+                        
+                        if ($result_additional_gallery && mysqli_num_rows($result_additional_gallery) > 0) {
+                            while ($row_additional = mysqli_fetch_assoc($result_additional_gallery)) {
+                                $foto_path_additional = 'upload/' . htmlspecialchars($row_additional['nama_file']);
+                                if (!file_exists($foto_path_additional)) continue;
+                        ?>
+                                <div class="grid-item"> 
+                                    <a class="img-box" href="<?php echo $foto_path_additional; ?>" title="<?php echo htmlspecialchars($row_additional['keterangan']); ?>">
+                                        <img src="<?php echo $foto_path_additional; ?>" alt="<?php echo htmlspecialchars($row_additional['keterangan']); ?>" />
+                                        
+                                        <?php if (!empty($row_additional['keterangan'])): ?>
+                                            <div class="image-overlay">
+                                                <p class="caption-galeri"><?php echo htmlspecialchars($row_additional['keterangan']); ?></p>
+                                            </div>
+                                        <?php endif; ?>
+                                    </a>
                                 </div>
-                            </div>
-                        </div>
-                    <?php
-                        } // Akhir dari loop
-                    } else {
-                        echo "<p class='col-12 text-center text-muted'>Belum ada momen tambahan untuk ditampilkan.</p>";
-                    }
-                    ?>
+                        <?php
+                            } // Akhir dari loop
+                        }
+                        ?>
+                    </div> </div> <?php
+                // Tampilkan pesan 'kosong' di luar grid
+                if ($result_additional_gallery && mysqli_num_rows($result_additional_gallery) == 0) {
+                    echo "<p class='col-12 text-center text-muted'>Belum ada momen tambahan untuk ditampilkan.</p>";
+                }
+                ?>
                 </div>
-            </div>
         </section>
     </main>
 
@@ -334,6 +336,9 @@
 include 'footer.php';
 ?>
 <script src="themekit/scripts/glide.min.js"></script>
+
+<script src="themekit/scripts/grid.js"></script>
+<script src="themekit/scripts/maso.js"></script>
 <script>
     // Script untuk Background Header Slider
     $(document).ready(function() {

@@ -74,7 +74,7 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="title">
-                            <h2>Hubungi kami disini</h2>
+                            <h2>kirim pesan</h2>
                         </div>
 
                         <?php

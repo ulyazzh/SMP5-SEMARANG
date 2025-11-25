@@ -2385,3 +2385,43 @@ Extra small devices (portrait phones, less than 576px)
 }
 }
 
+/* Target semua .img-box yang ada di dalam .slider.
+  Anda bisa juga menggunakan class .cnt-box .img-box jika lebih spesifik.
+*/
+
+.slider .img-box {
+  /* 1. Tentukan tinggi yang SAMA untuk semua kotak gambar */
+  height: 200px; /* <-- Sesuaikan angka ini (misal 180px, 220px) sesuai selera Anda */
+  
+  /* 2. Sembunyikan bagian gambar yang meluap */
+  overflow: hidden;
+  
+  /* 3. (Opsional) Menjaga gambar tetap di tengah jika tidak 'cover' */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider .img-box img {
+  /* 4. Paksa gambar mengisi 100% dari .img-box */
+  width: 100%;
+  height: 100%;
+  
+  
+  object-fit: cover; 
+}
+.slider .caption h2 {
+  color: #f8f8f8; /* Kode untuk warna putih */
+}
+
+
+.maso-item .caption p {
+  /* 1. Tentukan tinggi MAKSIMAL untuk area teks */
+  max-height: 100px; /* <-- Anda bisa ganti angkanya (misal: 80px, 120px) */
+  
+  /* 2. Tambahkan scrollbar vertikal (Y) JIKA teksnya lebih panjang */
+  overflow-y: auto;
+  
+  /* (Opsional) Beri sedikit padding di kanan agar scrollbar tidak menempel teks */
+  padding-right: 10px; 
+}
